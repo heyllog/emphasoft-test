@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import AuthPage from "./pages/AuthPage";
 
 function App() {
+  const [token, setToken] = useState()
+
   return (
     <Router>
+      <p>{token}</p>
       <div>
         <nav>
           <ul>
@@ -25,6 +29,7 @@ function App() {
           <Route path="/users">
           </Route>
           <Route path="/">
+            <AuthPage token={token} setToken={setToken}/>
           </Route>
         </Switch>
       </div>
