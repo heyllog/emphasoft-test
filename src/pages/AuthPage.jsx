@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import AuthForm from '../components/AuthForm';
+import { Link } from 'react-router-dom';
 
-function AuthPage({setToken}) {
-  const [opened, setOpened] = useState(true);
-
-  return (
+function AuthPage({ token, setToken }) {
+  return token ? (
     <>
-      <button onClick={() => setOpened(!opened)}>Close</button>
-      <p>{'Username: test_super\n' +
-      'Password: Nf<U4f<rDbtDxAPn'}</p>
-      {opened && <AuthForm setToken={setToken}/>}
+      <span>You are already authorized</span>
+      <span>
+        <Link to='users'>Users List</Link>
+      </span>
     </>
+  ) : (
+    <AuthForm setToken={setToken} />
   );
 }
 
