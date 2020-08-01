@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/emphasoft-test/static/css/main.588c5375.chunk.css",
-    "main.js": "/emphasoft-test/static/js/main.fd21393e.chunk.js",
-    "main.js.map": "/emphasoft-test/static/js/main.fd21393e.chunk.js.map",
+    "main.js": "/emphasoft-test/static/js/main.6e752043.chunk.js",
+    "main.js.map": "/emphasoft-test/static/js/main.6e752043.chunk.js.map",
     "runtime-main.js": "/emphasoft-test/static/js/runtime-main.80478411.js",
     "runtime-main.js.map": "/emphasoft-test/static/js/runtime-main.80478411.js.map",
     "static/js/2.3ba2d7f4.chunk.js": "/emphasoft-test/static/js/2.3ba2d7f4.chunk.js",
     "static/js/2.3ba2d7f4.chunk.js.map": "/emphasoft-test/static/js/2.3ba2d7f4.chunk.js.map",
     "index.html": "/emphasoft-test/index.html",
-    "precache-manifest.c57faef3f493f8a57265f7150d1d00c0.js": "/emphasoft-test/precache-manifest.c57faef3f493f8a57265f7150d1d00c0.js",
+    "precache-manifest.86b1b305abc35fc4b85c6dc1b0dff576.js": "/emphasoft-test/precache-manifest.86b1b305abc35fc4b85c6dc1b0dff576.js",
     "service-worker.js": "/emphasoft-test/service-worker.js",
     "static/css/main.588c5375.chunk.css.map": "/emphasoft-test/static/css/main.588c5375.chunk.css.map",
     "static/js/2.3ba2d7f4.chunk.js.LICENSE.txt": "/emphasoft-test/static/js/2.3ba2d7f4.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.80478411.js",
     "static/js/2.3ba2d7f4.chunk.js",
     "static/css/main.588c5375.chunk.css",
-    "static/js/main.fd21393e.chunk.js"
+    "static/js/main.6e752043.chunk.js"
   ]
 }
