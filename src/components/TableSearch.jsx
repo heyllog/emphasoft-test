@@ -8,6 +8,7 @@ function TableSearch({ onSearch }) {
   const handleSearch = () => onSearch(value);
   return (
     <>
+      <span>Find by username: </span>
       <input type='text' value={value} onChange={valueChangeHandler} />
       <button onClick={handleSearch}>Search</button>
     </>

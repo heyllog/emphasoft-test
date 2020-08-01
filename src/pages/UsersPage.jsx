@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Table from '../components/Table';
 import orderBy from 'lodash/orderBy';
+import isEmpty from 'lodash/isEmpty';
 import { Link } from 'react-router-dom';
+
 import TableSearch from '../components/TableSearch';
+import Table from '../components/Table';
 
 function UsersPage({ token }) {
   const [users, setUsers] = useState([]);
   const [sortType, setSortType] = useState('asc');
-  const [filteredData, setFilteredData] = useState();
+  const [filteredData, setFilteredData] = useState(null);
 
   const onSort = useCallback(
     (field) => {
@@ -69,7 +71,13 @@ function UsersPage({ token }) {
   return token ? (
     <>
       <TableSearch onSearch={onSearch} />
-      <Table users={filteredData ? filteredData : users} onSort={onSort} />
+      {isEmpty(users) ? (
+        <p>Loading...</p>
+      ) : isEmpty(filteredData) && filteredData ? (
+        <p>No such users</p>
+      ) : (
+        <Table users={filteredData ? filteredData : users} onSort={onSort} />
+      )}
     </>
   ) : (
     <>

@@ -1,10 +1,7 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
 
 function Table({ users, onSort }) {
-  return isEmpty(users) ? (
-    <p>Loading...</p>
-  ) : (
+  return (
     <table>
       <thead>
         <tr>
