@@ -6,8 +6,8 @@ const usernameCheck = /^[\w.@+-]{1,150}$/;
 const passwordCheck = /^(?=.*[A-Z])(?=.*\d).{8,128}$/;
 
 function AuthForm({ setToken }) {
-  const [username, setUsername] = useState('test_super');
-  const [password, setPassword] = useState('Nf<U4f<rDbtDxAPn');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -63,23 +63,32 @@ function AuthForm({ setToken }) {
 
   return (
     <>
-      <form className='login-form' onSubmit={handleSubmit}>
+      <form className='auth-form' onSubmit={handleSubmit}>
+        <span className='login'>Account Login</span>
         {errors && <span className='error'>{errors}</span>}
-        <input
-          value='test_super'
-          type='text'
-          placeholder='Username'
-          onChange={usernameChangeHandler}
-        />
+        <label>
+          Username
+          <input
+            value={username}
+            type='text'
+            placeholder='Username'
+            onChange={usernameChangeHandler}
+          />
+        </label>
         <br />
-        <input
-          value='Nf<U4f<rDbtDxAPn'
-          type='password'
-          placeholder='Password'
-          onChange={passwordChangeHandler}
-        />
+        <label>
+          Password
+          <input
+            value={password}
+            type='password'
+            placeholder='Password'
+            onChange={passwordChangeHandler}
+          />
+        </label>
         <br />
-        <button type='submit'>{loading ? 'Loading...' : 'Login'}</button>
+        <button className='button' type='submit'>
+          {loading ? 'Loading...' : 'Login'}
+        </button>
       </form>
     </>
   );

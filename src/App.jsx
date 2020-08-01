@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import AuthPage from './pages/AuthPage';
 import UsersPage from './pages/UsersPage';
 import NotFound from './pages/NotFound';
 
 function App() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState('');
 
   return (
     <Router>

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 
+$accent: #333333;
+$grey: #4b5a65;
+$light-grey: #ebebeb;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,10 +11,11 @@
 }
 
 body {
-  margin: 0;
+  font-size: 16px;
   font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $light-grey;
 }
 
 .not-found {
@@ -18,4 +23,126 @@ body {
   font-size: 32px;
   padding: 2rem;
   border-bottom: 1px solid gray;
+}
+
+.auth {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .authorized {
+    font-size: 2rem;
+    text-align: center;
+
+    p {
+      margin: 2rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .button {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.login {
+  font-size: 2rem;
+  margin-bottom: 1.4rem;
+  text-transform: uppercase;
+}
+
+.auth-form {
+  //width: 28rem;
+  //height: 18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 10px;
+  color: $accent;
+  background-color: #ffffff;
+
+  label {
+    text-transform: uppercase;
+  }
+
+  input {
+    margin-top: 0.6rem;
+    padding: 0.75rem;
+    width: 100%;
+    border: 1px solid $light-grey;
+    border-radius: 2px;
+    outline: none;
+    transition: background-color 0.25s ease;
+    font-size: 1.7rem;
+
+    &::placeholder {
+      color: lighten($grey, 40%);
+    }
+  }
+
+  .button {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+  }
+}
+
+.error {
+  margin-bottom: 2rem;
+  padding: 0.75rem;
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid #e6b7bb;
+  background-color: #fae2e5;
+  border-radius: 2px;
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 2rem;
+  color: #fff;
+  text-decoration: none;
+  background-color: $accent;
+  font-weight: 800;
+  text-align: center;
+  outline: none;
+  transition: background-color 0.1s ease;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: lighten($accent, 5%);
+
+    &::after {
+      opacity: 0.22;
+    }
+  }
+
+  &:active {
+    background-color: darken($accent, 5%);
+
+    &::after {
+      opacity: 0.32;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .auth {
+    background-color: #ffffff;
+  }
 }
