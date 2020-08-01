@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Регулярные выражения для проверки логина и пароля, взяты из swagger, но изменены возможные длины строк
@@ -11,6 +11,7 @@ function AuthForm({ setToken }) {
   const [errors, setErrors] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const controller = new AbortController();
 
   const usernameChangeHandler = (event) => setUsername(event.target.value);
   const passwordChangeHandler = (event) => setPassword(event.target.value);
@@ -33,6 +34,7 @@ function AuthForm({ setToken }) {
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
           },
+          signal: controller.signal,
           body: JSON.stringify({
             username: username,
             password: password,
@@ -46,12 +48,18 @@ function AuthForm({ setToken }) {
         history.push('users');
       }
     } catch {
-      setErrors('Incorrect username or password.');
-      setLoading(false);
+      if (!controller.signal.aborted) {
+        setErrors('Incorrect username or password.');
+        setLoading(false);
+      }
     }
   };
 
-  // TODO abortController
+  useEffect(() => {
+    return () => {
+      controller.abort();
+    };
+  }, []);
 
   return (
     <>
