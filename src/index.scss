@@ -13,6 +13,7 @@ $light-grey: #ebebeb;
 body {
   font-size: 16px;
   font-family: 'Nunito Sans', sans-serif;
+  color: $accent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $light-grey;
@@ -30,23 +31,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  .authorized {
-    font-size: 2rem;
-    text-align: center;
+.authorized {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2rem;
+  text-align: center;
 
-    p {
-      margin: 2rem;
-    }
+  p {
+    margin: 2rem;
+  }
 
-    a {
-      text-decoration: none;
-      color: #ffffff;
-    }
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
 
-    .button {
-      font-size: 1.5rem;
-    }
+  .button {
+    font-size: 1.5rem;
   }
 }
 
@@ -73,13 +78,13 @@ body {
 
   input {
     margin-top: 0.6rem;
-    padding: 0.75rem;
+    padding: 1.3rem;
     width: 100%;
     border: 1px solid $light-grey;
     border-radius: 2px;
     outline: none;
     transition: background-color 0.25s ease;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 
     &::placeholder {
       color: lighten($grey, 40%);
@@ -138,6 +143,107 @@ body {
     &::after {
       opacity: 0.32;
     }
+  }
+}
+
+.search {
+  margin: 2rem 4rem;
+
+  label {
+    font-size: 1.1rem;
+  }
+
+  input {
+    margin-top: 0.7rem;
+    padding: 0.75rem;
+    width: 100%;
+    border: 1px solid $light-grey;
+    border-radius: 2px;
+    outline: none;
+    transition: background-color 0.25s ease;
+    font-size: 1.7rem;
+  }
+}
+
+.users-page {
+  .error {
+    margin: 4rem;
+  }
+}
+
+.users-table {
+  margin: 0 4rem 1rem 4rem;
+  background-color: #fff;
+  text-align: center;
+  overflow: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    background-color: darken($light-grey, 10%);
+
+    th:nth-child(1) {
+      cursor: pointer;
+    }
+  }
+
+  th,
+  td {
+    border: 1px solid $light-grey;
+    padding: 0.3rem;
+  }
+
+  tr {
+    td:nth-child(1) {
+      width: 3rem;
+    }
+  }
+}
+
+.lds-facebook {
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
   }
 }
 

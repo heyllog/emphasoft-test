@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import orderBy from 'lodash/orderBy';
 import isEmpty from 'lodash/isEmpty';
-import { Link } from 'react-router-dom';
 
 import TableSearch from '../components/TableSearch';
 import Table from '../components/Table';
+import Redirect from '../components/Redirect';
+import Loader from '../components/Loader';
 
 function UsersPage({ token }) {
   const [users, setUsers] = useState([]);
   const [sortType, setSortType] = useState('asc');
+  const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState(null);
 
   const onSort = useCallback(
@@ -30,9 +32,9 @@ function UsersPage({ token }) {
     [users]
   );
 
-  const onSearch = (value) => {
-    setFilteredData(getFilteredData(value));
-  };
+  useEffect(() => {
+    setFilteredData(getFilteredData(searchTerm));
+  }, [getFilteredData, searchTerm]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -54,7 +56,6 @@ function UsersPage({ token }) {
           setUsers(json);
         }
       } catch (e) {
-        // TODO обработка ошибок
         console.error(e);
       }
     };
@@ -69,23 +70,18 @@ function UsersPage({ token }) {
   }, [token]);
 
   return token ? (
-    <>
-      <TableSearch onSearch={onSearch} />
+    <div className='users-page'>
+      <TableSearch setSearchTerm={setSearchTerm} />
       {isEmpty(users) ? (
-        <p>Loading...</p>
+        <Loader />
       ) : isEmpty(filteredData) && filteredData ? (
-        <p>No such users</p>
+        <span className='error'>No such users</span>
       ) : (
         <Table users={filteredData ? filteredData : users} onSort={onSort} />
       )}
-    </>
+    </div>
   ) : (
-    <>
-      <span>You are not authorized</span>
-      <span>
-        <Link to='/'>Sign In</Link>
-      </span>
-    </>
+    <Redirect message='You are not authorized' link='/' button='Sign In' />
   );
 }
 

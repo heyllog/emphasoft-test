@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function TableSearch({ onSearch }) {
-  const [value, setValue] = useState('');
+function TableSearch({ setSearchTerm }) {
+  const valueChangeHandler = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
-  const valueChangeHandler = (event) => setValue(event.target.value);
-
-  const handleSearch = () => onSearch(value);
   return (
-    <>
-      <span>Find by username: </span>
-      <input type='text' value={value} onChange={valueChangeHandler} />
-      <button onClick={handleSearch}>Search</button>
-    </>
+    <div className='search'>
+      <label>
+        <span>Find by username: </span>
+        <input type='text' onChange={valueChangeHandler} />
+      </label>
+    </div>
   );
 }
 
