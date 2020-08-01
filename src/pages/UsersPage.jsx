@@ -81,7 +81,7 @@ function UsersPage({ token }) {
       )}
     </div>
   ) : (
-    <Redirect message='You are not authorized' link='/' button='Sign In' />
+    <Redirect message='You are not authorized' link='/emphasoft-test' button='Sign In' />
   );
 }
 

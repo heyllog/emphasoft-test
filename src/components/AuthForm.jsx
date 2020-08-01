@@ -45,7 +45,7 @@ function AuthForm({ setToken }) {
       if (response.ok) {
         let json = await response.json();
         setToken(json.token);
-        history.push('users');
+        history.push('emphasoft-test/users');
       }
     } catch {
       if (!controller.signal.aborted) {

@@ -7,7 +7,11 @@ function AuthPage({ token, setToken }) {
   return (
     <div className='auth'>
       {token ? (
-        <Redirect message='You are already authorized' link='users' button='Users List' />
+        <Redirect
+          message='You are already authorized'
+          link='/emphasoft-test/users'
+          button='Users List'
+        />
       ) : (
         <AuthForm setToken={setToken} />
       )}
